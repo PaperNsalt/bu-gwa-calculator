@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+*{
+  font-family: "Poppins", sans-serif;
+  font-optical-sizing: auto;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+
+:root {
+        --color-primary: hsl(214, 74%, 83%);
+        --color-secondary: hsl(213, 50%, 10%);
+        --color-tertiary: hsl(273, 80%, 20%);
+        --color-accent: hsl(153, 80%, 20%);
+    }
+.dark {
+        --color-primary: hsl(213, 50%, 10%);
+        --color-secondary: hsl(213, 50%, 90%);
+        --color-tertiary: hsl(273, 80%, 80%);
+        --color-accent: hsl(153, 80%, 80%);
+    }
+
+
+a {
+ 
+}
+a:hover {
+  
+}
+
+main{
+  max-width: 90%;
+  margin-inline: auto;
+}
+
+body, html {
+  
+  background-color: var(--color-primary);
+}
+
+h1 {
+ 
+}
