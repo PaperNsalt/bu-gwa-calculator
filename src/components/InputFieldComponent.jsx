@@ -13,13 +13,13 @@ function InputField({ type = "text", placeholder, value, onChange, step }) {
       w-full
       flex 
       justify-center 
-      py-2 px-4 
-      border-1 rounded-full
+      py-2 px-4
+      border
+      rounded-full
       outline-none
       placeholder:text-black/40
       bg-white
       hover:border-white
-      hover:text-white
       focus:border-white
       focus:text-white
       focus:bg-[#f2552e]/90

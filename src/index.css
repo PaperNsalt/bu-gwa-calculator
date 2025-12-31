@@ -24,14 +24,6 @@
         --color-accent: hsl(153, 80%, 80%);
     }
 
-
-a {
- 
-}
-a:hover {
-  
-}
-
 main{
   max-width: 90%;
   margin-inline: auto;
@@ -40,8 +32,4 @@ main{
 body, html {
   
   background-color: var(--color-secondary);
-}
-
-h1 {
- 
 }

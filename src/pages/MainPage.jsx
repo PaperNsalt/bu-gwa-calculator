@@ -93,10 +93,9 @@ function MainPage() {
         <h1 className="text-[4rem] tracking-tighter leading-14 font-medium">
           BU GWA Calculator
         </h1>
-        <p >By: PaperNsalt</p>
+        <p>By: PaperNsalt</p>
       </div>
-
-      <div className="bg-gradient-to-t from-indigo-500 to-blue-500 shadow-lg flex flex-col gap-6 rounded-4xl p-10">
+      <div className="bg-linear-to-t from-indigo-500 to-blue-500 shadow-lg flex flex-col gap-6 rounded-4xl p-10">
         {/* Header Info */}
         <div className="grid grid-cols-3 gap-6 w-full">
           <InputField
@@ -135,14 +134,14 @@ function MainPage() {
               transition={{ duration: 0.25, ease: "easeOut" }}
               className="grid grid-cols-2 gap-6 w-full"
             >
-              <div  className="flex gap-2 items-center">
-              <InputField
-                type="number"
-                step="0.25"
-                placeholder="Grade (1.00–5.00)"
-                value={subject.grade}
-                onChange={(e) => handleChange(index, "grade", e.target.value)}
-              />
+              <div className="flex gap-2 items-center">
+                <InputField
+                  type="number"
+                  step="0.25"
+                  placeholder="Grade (1.00–5.00)"
+                  value={subject.grade}
+                  onChange={(e) => handleChange(index, "grade", e.target.value)}
+                />
               </div>
 
               <div className="flex gap-2 items-center">
@@ -189,10 +188,10 @@ function MainPage() {
                 </p>
                 <p
                   className={` mt-2 text-[1.8rem] font-semibold tracking-tighter leading-10 ${
-                  award.isFailed ? "text-red-300" : "text-[#ff7944]"
+                    award.isFailed ? "text-red-300" : "text-[#ff7944]"
                   }`}
                 >
-                {award.title}
+                  {award.title}
                 </p>
                 <p className="mt-2 text-[1.4rem] tracking-tighter text-white">
                   {name}
@@ -201,8 +200,6 @@ function MainPage() {
                 <p className="text-[1.2rem] tracking-tighter text-white">
                   {`${year} ${course}`}
                 </p>
-
-                
               </div>
 
               {/* Right Section */}
