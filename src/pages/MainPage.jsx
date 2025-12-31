@@ -6,9 +6,9 @@ import { PlusIcon, RemoveIcon } from "../components/IconComponent";
 
 function MainPage() {
   const [gwa, setGwa] = useState(null);
-  const [name, setName] = useState ("");
-  const [course, setCourse] = useState ("");
-  const [year, setYear] = useState ("");
+  const [name, setName] = useState("");
+  const [course, setCourse] = useState("");
+  const [year, setYear] = useState("");
 
   const [subjects, setSubjects] = useState([{ grade: "", units: "" }]);
 
@@ -51,29 +51,71 @@ function MainPage() {
     setGwa(result.toFixed(2));
   };
 
+  const getAward = (gwa) => {
+    const value = parseFloat(gwa);
+
+    if (value <= 1.25) {
+      return {
+        title: "President’s Lister",
+        message: "Congratulations!",
+        isFailed: false,
+      };
+    }
+
+    if (value <= 1.75) {
+      return {
+        title: "Dean’s Lister",
+        message: "Congratulations! You did great 👏",
+        isFailed: false,
+      };
+    }
+
+    if (value <= 3.0) {
+      return {
+        title: "No Award",
+        message: "Good job! Keep pushing 💪",
+        isFailed: false,
+      };
+    }
+
+    return {
+      title: "Failed",
+      message: "Better luck next time. Don’t give up 💙",
+      isFailed: true,
+    };
+  };
+
+  const award = gwa !== null ? getAward(gwa) : null;
+
   return (
-    <section>
-      <div className="flex justify-center flex-col mb-6">
+    <section className=" min-h-[90vh] flex flex-col justify-center items-center p-8">
+      <div className=" flex justify-center items-center flex-col mb-6 text-white">
         <h1 className="text-[4rem] tracking-tighter leading-14 font-medium">
           BU GWA Calculator
         </h1>
-        <p>By: PaperNsalt</p>
+        <p >By: PaperNsalt</p>
       </div>
 
-      <div className="bg-white shadow-md flex flex-col gap-6 rounded-4xl p-10">
+      <div className="bg-gradient-to-t from-indigo-500 to-blue-500 shadow-lg flex flex-col gap-6 rounded-4xl p-10">
         {/* Header Info */}
         <div className="grid grid-cols-3 gap-6 w-full">
-          <InputField type="text" placeholder="Name" 
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          <InputField
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
-          <InputField type="text" placeholder="Course" 
-          value={course}
-          onChange={(e) => setCourse(e.target.value)}
+          <InputField
+            type="text"
+            placeholder="Course"
+            value={course}
+            onChange={(e) => setCourse(e.target.value)}
           />
-          <InputField type="text" placeholder="Year" 
-          value={year}
-          onChange={(e) => setYear(e.target.value)}
+          <InputField
+            type="text"
+            placeholder="Year"
+            value={year}
+            onChange={(e) => setYear(e.target.value)}
           />
         </div>
 
@@ -93,6 +135,7 @@ function MainPage() {
               transition={{ duration: 0.25, ease: "easeOut" }}
               className="grid grid-cols-2 gap-6 w-full"
             >
+              <div  className="flex gap-2 items-center">
               <InputField
                 type="number"
                 step="0.25"
@@ -100,6 +143,7 @@ function MainPage() {
                 value={subject.grade}
                 onChange={(e) => handleChange(index, "grade", e.target.value)}
               />
+              </div>
 
               <div className="flex gap-2 items-center">
                 <InputField
@@ -126,24 +170,52 @@ function MainPage() {
         </div>
 
         <AnimatePresence>
-          {gwa && (
+          {gwa !== null && award && (
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="text-center mt-4 grid grid-cols-2"
+              className="text-center grid grid-cols-2 gap-6 border-t-2 border-white pt-8"
             >
-              <div>
-              <p className="text-xl">Your GWA is</p>
-              <h2 className="text-[3rem] font-bold">{gwa}</h2>
+              {/* Left Section */}
+              <div className="flex flex-col justify-center items-center">
+                <p
+                  className={`mt-1 text-[2rem] font-semibold tracking-tighter leading-10 ${
+                    award.isFailed ? "text-red-100" : "text-white"
+                  }`}
+                >
+                  {award.message}
+                </p>
+                <p
+                  className={` mt-2 text-[1.8rem] font-semibold tracking-tighter leading-10 ${
+                  award.isFailed ? "text-red-300" : "text-[#ff7944]"
+                  }`}
+                >
+                {award.title}
+                </p>
+                <p className="mt-2 text-[1.4rem] tracking-tighter text-white">
+                  {name}
+                </p>
+
+                <p className="text-[1.2rem] tracking-tighter text-white">
+                  {`${year} ${course}`}
+                </p>
+
+                
               </div>
-              <div>
-              <p>{name}</p>
-              <p>{course}</p>
-              <p>{year}</p>
+
+              {/* Right Section */}
+              <div className="bg-white p-12 rounded-4xl flex flex-col justify-center items-center">
+                <p className="text-xl">Your GWA is</p>
+                <h2
+                  className={`text-[3rem] font-bold ${
+                    award.isFailed ? "text-red-600" : "text-black"
+                  }`}
+                >
+                  {gwa}
+                </h2>
               </div>
-              
             </motion.div>
           )}
         </AnimatePresence>

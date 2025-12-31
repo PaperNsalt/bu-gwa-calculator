@@ -8,7 +8,7 @@ function Button({ label, onClick, icon, type = "button" }) {
       transition={{ type: "spring", stiffness: 300, damping: 15 }}
       type={type}
       onClick={onClick}
-      className="flex justify-center items-center gap-1 py-2 px-4 rounded-full border"
+      className="bg-white hover:bg-[#f2552e] hover:text-white transition-colors duration-300 ease-in-out flex justify-center items-center gap-1 py-2 px-4 rounded-full border"
     >
       {icon}
       {label}

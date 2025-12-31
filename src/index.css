@@ -13,7 +13,7 @@
 
 :root {
         --color-primary: hsl(216, 10%, 90%);
-        --color-secondary: hsl(213, 50%, 10%);
+        --color-secondary: hsl(19, 100%, 60%);
         --color-tertiary: hsl(273, 80%, 20%);
         --color-accent: hsl(153, 80%, 20%);
     }
@@ -39,7 +39,7 @@ main{
 
 body, html {
   
-  background-color: var(--color-primary);
+  background-color: var(--color-secondary);
 }
 
 h1 {
