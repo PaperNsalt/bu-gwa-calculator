@@ -18,22 +18,22 @@ The GWA Calculator is a web-based application that helps students compute their 
 - JavaScript
 
 ## 📷 Screenshots
-<img width="1905" height="922" alt="Bu Gwa Calculator" src="https://github.com/user-attachments/assets/77daa6b7-7e94-4f71-b960-198d603748d7" />
+<img width="1905" height="922" alt="BU GWA Calculator" src="https://github.com/user-attachments/assets/77daa6b7-7e94-4f71-b960-198d603748d7" />
 
 ## ⚙️ Installation & Setup
-1. Clone the repository
-   ```bash
-   git clone https://github.com/papernsalt/bu-gwa-calculator.git
-  ##
-2. Navigate to the project directory
-   ```bash
-  cd bu-gwa-calculator
-  ##
-3. Install project dependencies
-   ```bash
-  npm install
-  ##
-4. Start the development server
-   ```bash
-  npm run dev
 
+1. Clone the repository
+```bash
+git clone https://github.com/papernsalt/bu-gwa-calculator.git
+```
+2. Navigate to the project directory
+```bash
+cd bu-gwa-calculator
+```
+3. Install project dependencies
+```bash
+npm install
+```
+4. Start the development server
+```bash
+npm run dev
