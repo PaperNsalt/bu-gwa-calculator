@@ -26,11 +26,14 @@ The GWA Calculator is a web-based application that helps students compute their 
    git clone https://github.com/papernsalt/bu-gwa-calculator.git
   ##
 2. Navigate to the project directory
+   ```bash
   cd bu-gwa-calculator
   ##
 3. Install project dependencies
+   ```bash
   npm install
   ##
 4. Start the development server
+   ```bash
   npm run dev
 
