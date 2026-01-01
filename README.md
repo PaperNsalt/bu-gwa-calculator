@@ -1,5 +1,5 @@
 # GWA Calculator
-
+([https://papernsalt.github.io/bu-gwa-calculator/](https://papernsalt.github.io/bu-gwa-calculator/))
 ## 📌 Description
 The GWA Calculator is a web-based application that helps students compute their **General Weighted Average (GWA)** easily and accurately. Users can dynamically add or remove subjects, input grades and units, and instantly see their computed GWA with a clean and modern interface.
 
