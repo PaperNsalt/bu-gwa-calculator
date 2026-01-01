@@ -88,7 +88,7 @@ function MainPage() {
   const award = gwa !== null ? getAward(gwa) : null;
 
   return (
-    <section className=" min-h-[90vh] flex flex-col justify-center items-center p-8">
+    <section className=" min-h-[80vh] flex flex-col justify-center items-center p-8">
       <div className=" flex justify-center items-center flex-col mb-6 text-white">
         <h1 className="text-[4rem] tracking-tighter leading-14 font-medium">
           BU GWA Calculator
