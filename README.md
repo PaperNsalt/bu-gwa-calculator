@@ -1,16 +1,39 @@
-# React + Vite
+# GWA Calculator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Description
+The GWA Calculator is a web-based application that helps students compute their **General Weighted Average (GWA)** easily and accurately. Users can dynamically add or remove subjects, input grades and units, and instantly see their computed GWA with a clean and modern interface.
 
-Currently, two official plugins are available:
+## 🚀 Features
+- Dynamic add/remove subject fields
+- Automatic GWA computation
+- Real-time updates as values change
+- Clean and modern UI
+- Smooth animations and transitions
+- Responsive design for different screen sizes
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠️ Technologies Used
+- React.js
+- Tailwind CSS
+- Framer Motion
+- JavaScript
 
-## React Compiler
+## 📷 Screenshots
+<img width="1905" height="922" alt="BU GWA Calculator" src="https://github.com/user-attachments/assets/77daa6b7-7e94-4f71-b960-198d603748d7" />
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ⚙️ Installation & Setup
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone the repository
+```bash
+git clone https://github.com/papernsalt/bu-gwa-calculator.git
+```
+2. Navigate to the project directory
+```bash
+cd bu-gwa-calculator
+```
+3. Install project dependencies
+```bash
+npm install
+```
+4. Start the development server
+```bash
+npm run dev
