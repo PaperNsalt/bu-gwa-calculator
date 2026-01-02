@@ -9,6 +9,7 @@ function MainPage() {
   const [name, setName] = useState("");
   const [course, setCourse] = useState("");
   const [year, setYear] = useState("");
+  const [error, setError] = useState("");
 
   const [subjects, setSubjects] = useState([{ grade: "", units: "" }]);
 
@@ -29,21 +30,42 @@ function MainPage() {
   };
 
   const computeGWA = () => {
+    setError("");
+
+    // Validate header fields
+    if (!name || !course || !year) {
+      setGwa(null);
+      setError("Please fill in your Name, Course, and Year.");
+      return;
+    }
+
     let totalWeighted = 0;
     let totalUnits = 0;
 
-    subjects.forEach(({ grade, units }) => {
+    for (let i = 0; i < subjects.length; i++) {
+      const { grade, units } = subjects[i];
       const g = parseFloat(grade);
       const u = parseFloat(units);
 
-      if (!isNaN(g) && !isNaN(u) && u > 0) {
-        totalWeighted += g * u;
-        totalUnits += u;
+      if (!grade || !units) {
+        setGwa(null);
+        setError(`Please complete all fields in Subject ${i + 1}.`);
+        return;
       }
-    });
+
+      if (isNaN(g) || isNaN(u) || u <= 0) {
+        setGwa(null);
+        setError(`Invalid values in Subject ${i + 1}.`);
+        return;
+      }
+
+      totalWeighted += g * u;
+      totalUnits += u;
+    }
 
     if (totalUnits === 0) {
       setGwa(null);
+      setError("Total units must be greater than zero.");
       return;
     }
 
@@ -162,6 +184,20 @@ function MainPage() {
               </div>
             </motion.div>
           ))}
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {error && (
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.25 }}
+              className="w-full bg-red-100 text-red-700 px-4 py-3 rounded-2xl text-center"
+            >
+              {error}
+            </motion.div>
+          )}
         </AnimatePresence>
 
         <div>
