@@ -110,16 +110,17 @@ function MainPage() {
   const award = gwa !== null ? getAward(gwa) : null;
 
   return (
-    <section className=" min-h-[80vh] flex flex-col justify-center items-center p-8">
-      <div className=" flex justify-center items-center flex-col mb-6 text-white">
-        <h1 className="text-[4rem] tracking-tighter leading-14 font-medium">
+    <section className="min-h-screen flex flex-col justify-center items-center p-4 md:p-8">
+      <div className="flex justify-center items-center flex-col mb-6 text-white text-center">
+        <h1 className="text-4xl md:text-6xl lg:text-[4rem] tracking-tighter leading-tight font-medium">
           BU GWA Calculator
         </h1>
-        <p>By: PaperNsalt</p>
+        <p className="mt-2 text-sm md:text-base">By: PaperNsalt</p>
       </div>
-      <div className="bg-linear-to-t from-indigo-500 to-blue-500 shadow-lg flex flex-col gap-6 rounded-4xl p-10">
+      
+      <div className="bg-linear-to-t from-indigo-500 to-blue-500 shadow-lg flex flex-col gap-6 rounded-3xl md:rounded-4xl p-6 md:p-10 w-full max-w-3xl">
         {/* Header Info */}
-        <div className="grid grid-cols-3 gap-6 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 w-full">
           <InputField
             type="text"
             placeholder="Name"
@@ -146,45 +147,50 @@ function MainPage() {
         </div>
 
         {/* Subject Inputs */}
-        <AnimatePresence>
-          {subjects.map((subject, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: -20, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.95 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
-              className="grid grid-cols-2 gap-6 w-full"
-            >
-              <div className="flex gap-2 items-center">
-                <InputField
-                  type="number"
-                  step="0.25"
-                  placeholder="Grade (1.00–5.00)"
-                  value={subject.grade}
-                  onChange={(e) => handleChange(index, "grade", e.target.value)}
-                />
-              </div>
-
-              <div className="flex gap-2 items-center">
-                <InputField
-                  type="number"
-                  placeholder="Number of Units"
-                  value={subject.units}
-                  onChange={(e) => handleChange(index, "units", e.target.value)}
-                />
-
-                {/* Remove button only if more than 1 row */}
-                {subjects.length > 1 && (
-                  <ButtonComponent
-                    icon={RemoveIcon}
-                    onClick={() => removeSubject(index)}
+        <div className="flex flex-col gap-4">
+          <AnimatePresence>
+            {subjects.map((subject, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                // Kept grid-cols-2 even on mobile so Grade and Units stay side-by-side
+                className="grid grid-cols-2 gap-3 md:gap-6 w-full"
+              >
+                <div className="flex gap-2 items-center">
+                  <InputField
+                    type="number"
+                    step="0.25"
+                    placeholder="Grade"
+                    value={subject.grade}
+                    onChange={(e) => handleChange(index, "grade", e.target.value)}
                   />
-                )}
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+                </div>
+
+                <div className="flex gap-2 items-center">
+                  <InputField
+                    type="number"
+                    placeholder="Units"
+                    value={subject.units}
+                    onChange={(e) => handleChange(index, "units", e.target.value)}
+                  />
+
+                  {/* Remove button only if more than 1 row */}
+                  {subjects.length > 1 && (
+                    <div className="shrink-0">
+                      <ButtonComponent
+                        icon={RemoveIcon}
+                        onClick={() => removeSubject(index)}
+                      />
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
 
         <AnimatePresence>
           {error && (
@@ -193,7 +199,7 @@ function MainPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.25 }}
-              className="w-full bg-red-100 text-red-700 px-4 py-3 rounded-2xl text-center"
+              className="w-full bg-red-100 text-red-700 px-4 py-3 rounded-2xl text-center text-sm md:text-base"
             >
               {error}
             </motion.div>
@@ -201,7 +207,7 @@ function MainPage() {
         </AnimatePresence>
 
         <div>
-          <ButtonComponent label="Compute" onClick={computeGWA} />
+          <ButtonComponent label="Compute" onClick={computeGWA} className="w-full md:w-auto" />
         </div>
 
         <AnimatePresence>
@@ -211,38 +217,38 @@ function MainPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="text-center grid grid-cols-2 gap-6 border-t-2 border-white pt-8"
+              className="text-center grid grid-cols-1 md:grid-cols-2 gap-6 border-t-2 border-white pt-8"
             >
-              {/* Left Section */}
-              <div className="flex flex-col justify-center items-center">
+              {/* Left Section (Award Info) */}
+              <div className="flex flex-col justify-center items-center order-2 md:order-1">
                 <p
-                  className={`mt-1 text-[2rem] font-semibold tracking-tighter leading-10 ${
+                  className={`mt-1 text-2xl md:text-[2rem] font-semibold tracking-tighter leading-tight ${
                     award.isFailed ? "text-red-100" : "text-white"
                   }`}
                 >
                   {award.message}
                 </p>
                 <p
-                  className={` mt-2 text-[1.8rem] font-semibold tracking-tighter leading-10 ${
+                  className={`mt-2 text-xl md:text-[1.8rem] font-semibold tracking-tighter leading-tight ${
                     award.isFailed ? "text-red-300" : "text-[#ff7944]"
                   }`}
                 >
                   {award.title}
                 </p>
-                <p className="mt-2 text-[1.4rem] tracking-tighter text-white">
+                <p className="mt-2 text-lg md:text-[1.4rem] tracking-tighter text-white">
                   {name}
                 </p>
 
-                <p className="text-[1.2rem] tracking-tighter text-white">
+                <p className="text-base md:text-[1.2rem] tracking-tighter text-white">
                   {`${year} ${course}`}
                 </p>
               </div>
 
-              {/* Right Section */}
-              <div className="bg-white p-12 rounded-4xl flex flex-col justify-center items-center">
-                <p className="text-xl">Your GWA is</p>
+              {/* Right Section (GWA Score) */}
+              <div className="bg-white p-6 md:p-12 rounded-3xl md:rounded-4xl flex flex-col justify-center items-center order-1 md:order-2">
+                <p className="text-lg md:text-xl">Your GWA is</p>
                 <h2
-                  className={`text-[3rem] font-bold ${
+                  className={`text-4xl md:text-[3rem] font-bold ${
                     award.isFailed ? "text-red-600" : "text-black"
                   }`}
                 >
